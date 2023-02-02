@@ -16,6 +16,20 @@
 		5BCF582A298B48D6008DC27B /* ProcesserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF5829298B48D6008DC27B /* ProcesserTests.swift */; };
 		5BCF5834298B48D6008DC27B /* ProcesserUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF5833298B48D6008DC27B /* ProcesserUITests.swift */; };
 		5BCF5836298B48D6008DC27B /* ProcesserUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF5835298B48D6008DC27B /* ProcesserUITestsLaunchTests.swift */; };
+		5BCF5844298B4CB9008DC27B /* ProcessorPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF5843298B4CB9008DC27B /* ProcessorPublisher.swift */; };
+		5BCF5847298B4D24008DC27B /* CancellablesStorableStorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF5846298B4D24008DC27B /* CancellablesStorableStorable.swift */; };
+		5BCF584A298B4E2D008DC27B /* ProcessorReducerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF5849298B4E2D008DC27B /* ProcessorReducerProtocol.swift */; };
+		5BCF584C298B54A1008DC27B /* Processor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF584B298B54A1008DC27B /* Processor.swift */; };
+		5BCF584E298B6C94008DC27B /* AnyProcessorReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF584D298B6C94008DC27B /* AnyProcessorReducer.swift */; };
+		5BCF586C298B98AC008DC27B /* KVTokenServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF5861298B98AC008DC27B /* KVTokenServer.swift */; };
+		5BCF586D298B98AC008DC27B /* MockKVTokenService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF5862298B98AC008DC27B /* MockKVTokenService.swift */; };
+		5BCF586E298B98AC008DC27B /* AppleSignInServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF5864298B98AC008DC27B /* AppleSignInServer.swift */; };
+		5BCF586F298B98AC008DC27B /* MockAppleSignInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF5865298B98AC008DC27B /* MockAppleSignInService.swift */; };
+		5BCF5870298B98AC008DC27B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF5866298B98AC008DC27B /* User.swift */; };
+		5BCF5871298B98AC008DC27B /* MockFirebaseSignInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF5868298B98AC008DC27B /* MockFirebaseSignInService.swift */; };
+		5BCF5872298B98AC008DC27B /* FirebaseSignInServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF5869298B98AC008DC27B /* FirebaseSignInServer.swift */; };
+		5BCF5873298B98AC008DC27B /* SignInProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF586B298B98AC008DC27B /* SignInProcessor.swift */; };
+		5BCF5875298B9F54008DC27B /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCF5874298B9F54008DC27B /* SignInViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +63,20 @@
 		5BCF582F298B48D6008DC27B /* ProcesserUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProcesserUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BCF5833298B48D6008DC27B /* ProcesserUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcesserUITests.swift; sourceTree = "<group>"; };
 		5BCF5835298B48D6008DC27B /* ProcesserUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcesserUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5BCF5843298B4CB9008DC27B /* ProcessorPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessorPublisher.swift; sourceTree = "<group>"; };
+		5BCF5846298B4D24008DC27B /* CancellablesStorableStorable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancellablesStorableStorable.swift; sourceTree = "<group>"; };
+		5BCF5849298B4E2D008DC27B /* ProcessorReducerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessorReducerProtocol.swift; sourceTree = "<group>"; };
+		5BCF584B298B54A1008DC27B /* Processor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Processor.swift; sourceTree = "<group>"; };
+		5BCF584D298B6C94008DC27B /* AnyProcessorReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyProcessorReducer.swift; sourceTree = "<group>"; };
+		5BCF5861298B98AC008DC27B /* KVTokenServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KVTokenServer.swift; sourceTree = "<group>"; };
+		5BCF5862298B98AC008DC27B /* MockKVTokenService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockKVTokenService.swift; sourceTree = "<group>"; };
+		5BCF5864298B98AC008DC27B /* AppleSignInServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppleSignInServer.swift; sourceTree = "<group>"; };
+		5BCF5865298B98AC008DC27B /* MockAppleSignInService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockAppleSignInService.swift; sourceTree = "<group>"; };
+		5BCF5866298B98AC008DC27B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5BCF5868298B98AC008DC27B /* MockFirebaseSignInService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockFirebaseSignInService.swift; sourceTree = "<group>"; };
+		5BCF5869298B98AC008DC27B /* FirebaseSignInServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseSignInServer.swift; sourceTree = "<group>"; };
+		5BCF586B298B98AC008DC27B /* SignInProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInProcessor.swift; sourceTree = "<group>"; };
+		5BCF5874298B9F54008DC27B /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +127,8 @@
 		5BCF5811298B48D5008DC27B /* Processer */ = {
 			isa = PBXGroup;
 			children = (
+				5BCF5842298B4933008DC27B /* Processor */,
+				5BCF585F298B98AC008DC27B /* SignIn */,
 				5BCF5812298B48D5008DC27B /* AppDelegate.swift */,
 				5BCF5814298B48D5008DC27B /* SceneDelegate.swift */,
 				5BCF5816298B48D5008DC27B /* ViewController.swift */,
@@ -125,6 +155,82 @@
 				5BCF5835298B48D6008DC27B /* ProcesserUITestsLaunchTests.swift */,
 			);
 			path = ProcesserUITests;
+			sourceTree = "<group>";
+		};
+		5BCF5842298B4933008DC27B /* Processor */ = {
+			isa = PBXGroup;
+			children = (
+				5BCF584B298B54A1008DC27B /* Processor.swift */,
+				5BCF5848298B4DDA008DC27B /* ProcessorReducer */,
+				5BCF5845298B4D14008DC27B /* Publisher */,
+			);
+			path = Processor;
+			sourceTree = "<group>";
+		};
+		5BCF5845298B4D14008DC27B /* Publisher */ = {
+			isa = PBXGroup;
+			children = (
+				5BCF5843298B4CB9008DC27B /* ProcessorPublisher.swift */,
+				5BCF5846298B4D24008DC27B /* CancellablesStorableStorable.swift */,
+			);
+			path = Publisher;
+			sourceTree = "<group>";
+		};
+		5BCF5848298B4DDA008DC27B /* ProcessorReducer */ = {
+			isa = PBXGroup;
+			children = (
+				5BCF5849298B4E2D008DC27B /* ProcessorReducerProtocol.swift */,
+				5BCF584D298B6C94008DC27B /* AnyProcessorReducer.swift */,
+			);
+			path = ProcessorReducer;
+			sourceTree = "<group>";
+		};
+		5BCF585F298B98AC008DC27B /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				5BCF5866298B98AC008DC27B /* User.swift */,
+				5BCF5860298B98AC008DC27B /* KVTokenServer */,
+				5BCF5863298B98AC008DC27B /* AppleSignInServer */,
+				5BCF5867298B98AC008DC27B /* FirebaseSignInServer */,
+				5BCF586A298B98AC008DC27B /* ViewModel */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		5BCF5860298B98AC008DC27B /* KVTokenServer */ = {
+			isa = PBXGroup;
+			children = (
+				5BCF5861298B98AC008DC27B /* KVTokenServer.swift */,
+				5BCF5862298B98AC008DC27B /* MockKVTokenService.swift */,
+			);
+			path = KVTokenServer;
+			sourceTree = "<group>";
+		};
+		5BCF5863298B98AC008DC27B /* AppleSignInServer */ = {
+			isa = PBXGroup;
+			children = (
+				5BCF5864298B98AC008DC27B /* AppleSignInServer.swift */,
+				5BCF5865298B98AC008DC27B /* MockAppleSignInService.swift */,
+			);
+			path = AppleSignInServer;
+			sourceTree = "<group>";
+		};
+		5BCF5867298B98AC008DC27B /* FirebaseSignInServer */ = {
+			isa = PBXGroup;
+			children = (
+				5BCF5868298B98AC008DC27B /* MockFirebaseSignInService.swift */,
+				5BCF5869298B98AC008DC27B /* FirebaseSignInServer.swift */,
+			);
+			path = FirebaseSignInServer;
+			sourceTree = "<group>";
+		};
+		5BCF586A298B98AC008DC27B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5BCF586B298B98AC008DC27B /* SignInProcessor.swift */,
+				5BCF5874298B9F54008DC27B /* SignInViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,9 +364,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BCF5870298B98AC008DC27B /* User.swift in Sources */,
+				5BCF586F298B98AC008DC27B /* MockAppleSignInService.swift in Sources */,
+				5BCF586D298B98AC008DC27B /* MockKVTokenService.swift in Sources */,
 				5BCF5817298B48D5008DC27B /* ViewController.swift in Sources */,
+				5BCF5871298B98AC008DC27B /* MockFirebaseSignInService.swift in Sources */,
+				5BCF586C298B98AC008DC27B /* KVTokenServer.swift in Sources */,
+				5BCF584C298B54A1008DC27B /* Processor.swift in Sources */,
+				5BCF586E298B98AC008DC27B /* AppleSignInServer.swift in Sources */,
+				5BCF584A298B4E2D008DC27B /* ProcessorReducerProtocol.swift in Sources */,
+				5BCF5875298B9F54008DC27B /* SignInViewModel.swift in Sources */,
+				5BCF5844298B4CB9008DC27B /* ProcessorPublisher.swift in Sources */,
+				5BCF5872298B98AC008DC27B /* FirebaseSignInServer.swift in Sources */,
 				5BCF5813298B48D5008DC27B /* AppDelegate.swift in Sources */,
 				5BCF5815298B48D5008DC27B /* SceneDelegate.swift in Sources */,
+				5BCF5873298B98AC008DC27B /* SignInProcessor.swift in Sources */,
+				5BCF584E298B6C94008DC27B /* AnyProcessorReducer.swift in Sources */,
+				5BCF5847298B4D24008DC27B /* CancellablesStorableStorable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
