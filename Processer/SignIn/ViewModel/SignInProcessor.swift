@@ -9,7 +9,7 @@ import Combine
 
 struct SignInProcessor {
     
-    typealias ProcessorType = Processor<States, Action, PrivateAction, Environment>
+    typealias ProcessorType = Processor<States, Action, PrivateAction>
     
     static var testProcessor: ProcessorType {
         Processor(initialState: States(stauts: .ready), reducer: Self.reducer, environment: Environment.test)

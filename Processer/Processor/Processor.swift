@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 @dynamicMemberLookup
-final class Processor<State, Action, PrivateAction, Environment>: Identifiable {
+final class Processor<State, Action, PrivateAction>: Identifiable {
     
     /// for process log
     /// default; UUID().uuidString
@@ -25,7 +25,7 @@ final class Processor<State, Action, PrivateAction, Environment>: Identifiable {
     
     typealias Mutated = (_ action: Action) -> PrivateAction
     
-    convenience init(initialState: State,
+    convenience init<Environment>(initialState: State,
                      reducer: AnyProcessorReducer<State, Action, PrivateAction, Environment>,
                         environment: Environment) {
         self.init(initialState: initialState,
