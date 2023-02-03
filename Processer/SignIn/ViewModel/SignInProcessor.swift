@@ -83,10 +83,9 @@ struct SignInProcessor {
                 
             case .handleKVTokenFetch(let .success(response)):
                 if let user = response.createUser() {
-                    return .send(.updateStauts(.didSignIn(user: user)))
+                    return .send(.storeUSer(user))
                 }
                 return .send(.updateStauts(.error(err: SignInError.unknown)))
-                
                 
             case .handleAppleSingIn(let .failure(error)),
                     .handleKVTokenFetch(let .failure(error)),
@@ -101,6 +100,9 @@ struct SignInProcessor {
                 return .none
             case .ready:
                 return .send(.updateStauts(.ready))
+            case .storeUSer(let user):
+                // 
+                return .send(.updateStauts(.didSignIn(user: user)))
             }
         })
         
@@ -112,6 +114,7 @@ extension SignInProcessor {
     // MARK: Action
     
     enum Action {
+        
         case appleSignIn
         
         case emailSignIn(_ email: String, _ password: String)
@@ -139,6 +142,7 @@ extension SignInProcessor {
                           jid: String,
                           email: String,
                           idToken: String)
+        case storeUSer(_ ueser: User)
         
         case storeAppleUser(_ appleUser: AppleUser)
         case updateFirebaseInfoIfNeed(response: FirebaseSignServerResponse, appleUser: AppleUser)
@@ -239,4 +243,53 @@ enum SignInStatus: Equatable {
 
 enum SignInError: Error {
     case unknown
+}
+
+
+extension SignInProcessor.Action: CustomStringConvertible {
+    
+    var description: String {
+        switch self {
+        case .emailSignIn:
+            return "emailSignIn"
+        case .appleSignIn:
+            return "appleSignIn"
+        }
+    }
+}
+
+extension SignInProcessor.PrivateAction: CustomStringConvertible {
+    var description: String {
+        switch self {
+            
+        case .appleSignIn:
+            return "appleSignIn"
+        case .signInEmail(with: let with, password: let password):
+            return "signInEmail: \(with), password: \(password)"
+        case .signInProviderID(appleUser: let appleUser):
+            return "signInProviderID: \(appleUser.user)"
+        case .update(response: let response, _, _):
+            return "update: \(response.userId)"
+        case .fetchKvToken(_, jid: let jid, _, _):
+            return "fetchKvToken \(jid)"
+        case .storeUSer:
+            return "storeUSer"
+        case .storeAppleUser:
+            return "storeAppleUser"
+        case .updateFirebaseInfoIfNeed:
+            return "updateFirebaseInfoIfNeed"
+        case .handleProviderIDSignIn:
+            return "handleProviderIDSignIn"
+        case .handleAppleSingIn:
+            return "handleAppleSingIn"
+        case .handleFirebaseSingIn:
+            return "handleFirebaseSingIn"
+        case .handleKVTokenFetch:
+            return "handleKVTokenFetch"
+        case .updateStauts:
+            return "updateStauts"
+        case .ready:
+            return "ready"
+        }
+    }
 }

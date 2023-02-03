@@ -9,7 +9,15 @@ import Foundation
 import Combine
 
 @dynamicMemberLookup
-final class Processor<State, Action, PrivateAction, Environment> {
+final class Processor<State, Action, PrivateAction, Environment>: Identifiable {
+    
+    /// for process log
+    /// default; UUID().uuidString
+    var id: String = UUID().uuidString
+    
+    /// if Action/PrivateAction has  conformed CustomStringConvertible will be priority description
+    /// default is true
+    var logActionDescriotionFirst: Bool = true
     
     var publisher: AnyPublisher<State, Never> {
         return _state.eraseToAnyPublisher()
@@ -34,11 +42,13 @@ final class Processor<State, Action, PrivateAction, Environment> {
     }
     
     func send(_ action: Action) {
+        log(obj: action)
         let privatization = reducer.transform(action)
         _send(privateAction: privatization)
     }
     
     private func _send(privateAction privatization: PrivateAction) {
+        log(obj: privatization)
         if let publisher = reducer.reducing(state: &_state.value, privateAction: privatization) {
             let uuid = UUID().uuidString
     
@@ -50,6 +60,8 @@ final class Processor<State, Action, PrivateAction, Environment> {
                     self._send(privateAction: privateAction)
                 })
             collection.storage[uuid] = [cancelable]
+        } else {
+            
         }
     }
     
@@ -58,10 +70,11 @@ final class Processor<State, Action, PrivateAction, Environment> {
     private let _state: CurrentValueSubject<State, Never>
     
     private let collection: CancellablesCollection = CancellablesCollection()
-    
+        
     private let queue: DispatchQueue = {
         DispatchQueue(label: "com.AnyProcessor.\(UUID().uuidString)")
     }()
+    
     
 }
 
@@ -69,4 +82,52 @@ extension Processor {
     subscript<Value>(dynamicMember keyPath: KeyPath<State, Value>) -> Value {
         return self._state.value[keyPath: keyPath]
     }
+}
+
+fileprivate extension Processor {
+    
+    private var prefix: String {
+        return "Processor ID: \(id.prefix(3)) -"
+    }
+    
+ 
+    func log(obj: Any) {
+        if let privateAction = obj as? PrivateAction {
+            _log(privateAction: privateAction)
+        } else if let action = obj as? Action {
+            _log(action: action)
+        }
+    }
+    
+    func _log(action: Action) {
+      #if DEBUG
+        if let act = action as? CustomStringConvertible,
+           logActionDescriotionFirst {
+            print("\(prefix) - Action - \(act.description) \n \(Date())")
+            return
+        }
+        
+        print("\(prefix) - Action - \(dump(action)) \n \(Date())")
+      #endif
+    }
+    
+    func _log(privateAction: PrivateAction) {
+        #if DEBUG
+        if let act = privateAction as? CustomStringConvertible,
+           logActionDescriotionFirst {
+            print("\(prefix) - PrivateAction - \(act.description) \n \(Date())")
+            return
+        }
+        
+        print("\(prefix) - PrivateAction - \(dump(privateAction)) \n \(Date())")
+        #endif
+    }
+   
+    func logDivid() {
+        #if DEBUG
+        print("\(prefix) -------------------------------------")
+        #endif
+    }
+    
+ 
 }
