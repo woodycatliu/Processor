@@ -61,7 +61,7 @@ final class Processor<State, Action, PrivateAction>: Identifiable {
                 })
             collection.insert(uuid, cancelable: cancelable)
         } else {
-            
+            logDivid()
         }
     }
     
