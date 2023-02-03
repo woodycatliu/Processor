@@ -103,11 +103,11 @@ fileprivate extension Processor {
       #if DEBUG
         if let act = action as? CustomStringConvertible,
            logActionDescriotionFirst {
-            print("\(prefix) - Action - \(act.description) \n \(Date())")
+            print("\(prefix) - Action - \(act.description) - date: \(Date())")
             return
         }
         
-        print("\(prefix) - Action - \(dump(action)) \n \(Date())")
+        print("\(prefix) - Action - \(dump(action)) - date: \(Date())")
       #endif
     }
     
@@ -115,11 +115,11 @@ fileprivate extension Processor {
         #if DEBUG
         if let act = privateAction as? CustomStringConvertible,
            logActionDescriotionFirst {
-            print("\(prefix) - PrivateAction - \(act.description) \n \(Date())")
+            print("\(prefix) - PrivateAction - \(act.description) - date: \(Date())")
             return
         }
         
-        print("\(prefix) - PrivateAction - \(dump(privateAction)) \n \(Date())")
+        print("\(prefix) - PrivateAction - \(dump(privateAction)) - date: \(Date())")
         #endif
     }
    
