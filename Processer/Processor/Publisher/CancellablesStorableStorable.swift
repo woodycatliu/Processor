@@ -9,28 +9,14 @@ import Foundation
 import Combine
 
 public protocol CancellablesStorableStorable: AnyObject {
-    var storage: [String: Set<AnyCancellable>] { get set }
+    var storage: [String: Set<AnyCancellable>] { get }
     func insert(_ id: String, cancelable: AnyCancellable?)
+    func remove(_ id: String, cancelable: AnyCancellable?)
+    func cancel(id: String)
 }
 
 class CancellablesCollection: CancellablesStorableStorable {
-    private let lock: NSRecursiveLock = NSRecursiveLock()
-    var storage: [String: Set<AnyCancellable>] {
-        set  {
-            lock.lock()
-            defer {
-                lock.unlock()
-            }
-            _storage = newValue
-        }
-        
-        get {
-            return _storage
-        }
-    }
-    
-    private var _storage: [String: Set<AnyCancellable>] = [:]
-    
+ 
     public func insert(_ id: String, cancelable: AnyCancellable?) {
         guard let cancelable = cancelable else { return }
         if storage[id] == nil {
@@ -45,4 +31,30 @@ class CancellablesCollection: CancellablesStorableStorable {
         }
         storage[id] = nil
     }
+    
+    public func remove(_ id: String, cancelable: AnyCancellable?) {
+        if let cancelable = cancelable,
+           storage[id] != nil,
+           storage[id]!.contains(cancelable) {
+            cancelable.cancel()
+            storage[id]?.remove(cancelable)
+        }
+    }
+        
+    private(set) var storage: [String: Set<AnyCancellable>] {
+        set  {
+            defer { lock.unlock() }
+            lock.lock()
+            _storage = newValue
+        }
+        
+        get {
+            return _storage
+        }
+    }
+    
+    private var _storage: [String: Set<AnyCancellable>] = [:]
+    
+    private let lock: NSRecursiveLock = NSRecursiveLock()
+
 }

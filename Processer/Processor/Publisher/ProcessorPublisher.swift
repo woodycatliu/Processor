@@ -24,21 +24,21 @@ public struct ProcessorPublisher<Output, Failure: Error>: Publisher {
         cancellationCancellable = AnyCancellable { [weak collectionCancellables] in
             cancellableSubject.send(())
             cancellableSubject.send(completion: .finished)
-            collectionCancellables?.storage[id]?.remove(cancellationCancellable)
+            collectionCancellables?.remove(id, cancelable: cancellationCancellable)
+            
             if collectionCancellables?.storage[id]?.isEmpty == .some(true) {
-                collectionCancellables?.storage[id] = nil
+                collectionCancellables?.cancel(id: id)
             }
         }
         
         return
             Deferred { () -> Publishers.HandleEvents<Publishers.PrefixUntilOutput<Self, PassthroughSubject<Void, Never>>> in
-                
+        
                 return self.prefix(untilOutputFrom: cancellableSubject)
                     .handleEvents(receiveSubscription: { [weak collectionCancellables] _ in
-                        if collectionCancellables?.storage[id] == nil {
-                            collectionCancellables?.storage[id] = []
-                        }
-                        collectionCancellables?.storage[id]?.insert(cancellationCancellable)
+                        
+                        collectionCancellables?.insert(id, cancelable: cancellationCancellable)
+                        
                     }, receiveCompletion: { _ in cancellationCancellable.cancel() }, receiveCancel: cancellationCancellable.cancel)
             }.eraseToProcessor()
     }

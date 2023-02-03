@@ -59,7 +59,7 @@ final class Processor<State, Action, PrivateAction, Environment>: Identifiable {
                     guard let self = self else { return }
                     self._send(privateAction: privateAction)
                 })
-            collection.storage[uuid] = [cancelable]
+            collection.insert(uuid, cancelable: cancelable)
         } else {
             
         }
